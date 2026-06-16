@@ -3,9 +3,8 @@ function Hero() {
     <section className="hero">
       <div className="hero-content">
         <h1>
-          Employees can scan QR 
-           check their attendence 
-            Assigned Task
+          Employees Work Tracking 
+          Software
         </h1>
 
         <p>
