@@ -18,12 +18,7 @@ function Hero() {
         </div>
       </div>
 
-       <div className="hero-right">
-        <img
-          src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a"
-          alt="QR Attendance"
-        />
-      </div>
+      
     </section>
   )
 }

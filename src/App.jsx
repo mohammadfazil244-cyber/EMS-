@@ -35,7 +35,7 @@ function App() {
         <Route path='/' element={
           <>
           <Info/>
-         <Hero/>
+         
           </> }/>
 
           <Route path='/QR' element={<Qr/>}/>
