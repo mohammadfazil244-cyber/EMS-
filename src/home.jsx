@@ -2,184 +2,169 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Home(){
-    const navigate = useNavigate()
-    const [user , setUser] = useState(null)
-    const [pop , setPop] = useState(false)
+function Home() {
+  const navigate = useNavigate();
 
-   useEffect(() => {
-    const token = localStorage.getItem("token")
-    
-    if(!token){
-      return;
-    }
-    
-      
-       console.log("TOKEN =", token);
-    axios.get("http://localhost:8080/Auth/profile" , {
-      
+  const [user, setUser] = useState(null);
+  const [pop, setPop] = useState(false);
+
+  const handleProfile = () => {
+    setPop(!pop);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    axios
+      .get("http://localhost:8080/Auth/profile", {
         headers: {
-          Authorization : `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-      
-    })
-    .then((response) => {
-      console.log(response.data)
-
-      setUser(response.data)
-    })
-
-    
-   
-
-   },[])
-
-
- 
-   const handleAttend = async () => {
-
-   try{
-
-      const token = localStorage.getItem("token")
+  const handleAttend = async () => {
+    try {
+      const token = localStorage.getItem("token");
 
       const response = await axios.get(
-         "http://localhost:8080/Generate/GetAttendence",
-         {
-            headers:{
-               Authorization:`Bearer ${token}`
-            }
-         }
-      )
-
-      localStorage.setItem("response",response.data)
-
-      console.log(response.data)
-
-      navigate("/AP" , {
-         state: response.data
-      })
-
-   } catch(error){
-
-      console.log(error)
-
-   }
-}
-    const handleQr = async() =>{
-
-      
-        navigate("/QR")
-      
-
-
-    }
-    
-    const handleAbout = async(e) =>{
-        e.preventDefault();
-
-        
-        try{
-
-            const token = localStorage.getItem("token");
-
-           const config = {
-                headers: {
-                    Authorization: "Bearer " + token
-                }
-            }
-
-            const AboutResponse = await axios.get("http://localhost:8080/Auth/users" , config)
-          
-            console.log( AboutResponse.data)
-          
-        navigate("/addTask")
-
-        }catch(error){
-            console.error(error)
-            if (error.response?.status === 401) {
-                alert("Session expired, please login again");
-                localStorage.removeItem("token");
-                navigate("/login");
-            }
+        "http://localhost:8080/Generate/GetAttendence",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-       
+      );
+
+      navigate("/AP", {
+        state: response.data,
+      });
+    } catch (error) {
+      console.log(error);
     }
- return (
-  <>
+  };
 
-    {/* NAVBAR */}
-    <div className="navbar">
+  const handleQr = () => {
+    navigate("/QR");
+  };
 
-      <div className="logo">
-        <h2>EMS</h2>
+  const handleAbout = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.get("http://localhost:8080/Auth/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      navigate("/addTask");
+    } catch (error) {
+      console.log(error);
+
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    }
+  };
+
+  return (
+    <>
+      {/* Navbar */}
+      <div className="navbar">
+
+        <div className="logo">
+          <h2>EMS</h2>
+        </div>
+
+        {user && (
+          <div
+            className="user-avatar"
+            onClick={handleProfile}
+          >
+            {user.name.charAt(0).toUpperCase()}
+          </div>
+        )}
+
       </div>
 
-      
-
-    </div>
-
-
-
-    {/* PROFILE DROPDOWN */}
-    {
-      pop && (
+      {/* Profile Popup */}
+      {pop && (
         <div className="dropdown">
 
-          <h1>User Details</h1>
+          <h3>User Details</h3>
 
-          <h2>Id : {user.id}</h2>
+          <p>
+            <strong>ID :</strong> {user?.id}
+          </p>
 
-          <h2>User : {user.name}</h2>
+          <p>
+            <strong>Name :</strong> {user?.name}
+          </p>
 
-          <h2>Email : {user.email}</h2>
+          <p>
+            <strong>Email :</strong> {user?.email}
+          </p>
 
-          <button onClick={() => setPop(false)}>
+          <button
+            className="close-btn"
+            onClick={() => setPop(false)}
+          >
             Close
           </button>
 
         </div>
-      )
-    }
+      )}
 
+      {/* Hero Section */}
+      <div className="home-container">
 
+        <div className="home-content">
 
-    {/* HOME SECTION */}
-    <div className="home-container">
+          <h1>
+            Employee Management
+            <br />
+            System
+          </h1>
 
-      <div className="home-content">
+          <p>
+            Manage attendance, generate QR codes,
+            assign tasks and track employee activity
+            efficiently.
+          </p>
 
-        <h1>
-          Employee Management System
-        </h1>
+          <div className="home-buttons">
 
-        <p>
-          Manage attendance, generate QR codes, assign tasks
-          and track employee activity efficiently.
-        </p>
+            <button onClick={handleQr}>
+              GENERATE QR
+            </button>
 
-        <div className="home-buttons">
+            <button onClick={handleAbout}>
+              ADD TASK
+            </button>
 
-          <button onClick={handleQr}>
-            GENERATE QR
-          </button>
+            <button onClick={handleAttend}>
+              EMPLOYEE DETAILS
+            </button>
 
-          <button onClick={handleAbout}>
-            ADD TASK
-          </button>
-
-          <button onClick={handleAttend}>
-            EMPLOYEE DETAILS
-          </button>
+          </div>
 
         </div>
 
       </div>
-
-    </div>
-
-  </>
-);
+    </>
+  );
 }
 
 export default Home;

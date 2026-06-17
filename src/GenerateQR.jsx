@@ -1,184 +1,157 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Qr() {
-
   const [qrImage, setQrImage] = useState("");
   const [user, setUser] = useState(null);
   const [pop, setPop] = useState(false);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-
     const token = localStorage.getItem("token");
-    
 
-    if(!token){
-      return;
-    }
-    
+    if (!token) return;
 
-      axios.get("http://localhost:8080/Auth/profile", {
-
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-
-    })
-    .then((response) => {
-
-      setUser(response.data);
-
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-    
-
-    
-
-    
+    axios
+      .get("http://localhost:8080/Auth/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setUser(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
-
-
+  useEffect(() => {
+    return () => {
+      if (qrImage) {
+        URL.revokeObjectURL(qrImage);
+      }
+    };
+  }, [qrImage]);
 
   const handleProfile = () => {
-
     setPop(!pop);
-
   };
 
-
-
-
-  const getQr = (e) => {
-
+  const getQr = async (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
+    try {
+      const token = localStorage.getItem("token");
 
-    if (!token) {
-
-      console.log("NO TOKEN FOUND");
-      return;
-
-    }
-
-    axios.post(
-      "http://localhost:8080/Generate/Qr",
-      {},
-      {
-
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
-
-        responseType: "blob"
-
+      if (!token) {
+        alert("No token found");
+        return;
       }
-    )
-    .then((response) => {
+
+      const response = await axios.post(
+        "http://localhost:8080/Generate/Qr",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          responseType: "blob",
+        }
+      );
 
       const imageUrl = URL.createObjectURL(response.data);
 
       setQrImage(imageUrl);
-
-    })
-    .catch((err) => {
-
+    } catch (err) {
       console.log(err);
-
-    });
-
+      alert("Failed to generate QR");
+    }
   };
-
-
-
-
 
   return (
     <>
-
       {/* NAVBAR */}
-      <div className="navbar-qr">
+      <div className="navbar">
+
+        <div className="logo">
+          <h2>EMS</h2>
+        </div>
 
         {user && (
-
-          <h2
-            className="user-avatar-qr"
+          <div
+            className="user-avatar"
             onClick={handleProfile}
           >
-            {user.name[0].toUpperCase()}
-          </h2>
-
+            {user.name.charAt(0).toUpperCase()}
+          </div>
         )}
 
       </div>
 
+      {/* PROFILE DROPDOWN */}
+      {pop && (
+        <div className="dropdown">
 
+          <h3>User Details</h3>
 
+          <p>
+            <strong>ID :</strong> {user?.id}
+          </p>
 
-      {/* DROPDOWN */}
-      {
-        pop && (
+          <p>
+            <strong>Name :</strong> {user?.name}
+          </p>
 
-          <div className="dropdown-qr">
+          <p>
+            <strong>Email :</strong> {user?.email}
+          </p>
 
-            <h1>User Details</h1>
+          <button
+            className="close-btn"
+            onClick={() => setPop(false)}
+          >
+            Close
+          </button>
 
-            <h2>Id : {user.id}</h2>
-
-            <h2>User : {user.name}</h2>
-
-            <h2>Email : {user.email}</h2>
-
-            <button onClick={() => setPop(false)}>
-              X
-            </button>
-
-          </div>
-
-        )
-      }
-
-
-
+        </div>
+      )}
 
       {/* QR SECTION */}
- <div className="qr-container">
+      <div className="qr-container">
 
-  <h1 className="qr-title">
-    Generate QR
-  </h1>
+        <div className="qr-card">
 
-  <button
-    className="qr-button"
-    onClick={getQr}
-  >
-    Click Here
-  </button>
+          <h1 className="qr-title">
+            Generate Attendance QR
+          </h1>
 
-</div>
+          <p className="qr-subtitle">
+            Click the button below to generate
+            a new attendance QR code.
+          </p>
 
+          <button
+            className="qr-button"
+            onClick={getQr}
+          >
+            Generate QR
+          </button>
 
+          {qrImage && (
+            <div className="qr-image-wrapper">
 
+              <img
+                src={qrImage}
+                alt="QR Code"
+                className="qr-image"
+              />
 
-      {
-        qrImage && (
+            </div>
+          )}
 
-          <img
-          className="qr-image"
-            src={qrImage}
-            alt="QR CODE"
-          />
+        </div>
 
-        )
-      }
-
+      </div>
     </>
   );
 }

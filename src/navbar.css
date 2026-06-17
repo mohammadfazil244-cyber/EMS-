@@ -654,57 +654,79 @@ body{
 /* =========================
    QR NAVBAR
 ========================= */
+/* =========================
+   NAVBAR
+========================= */
 
-.navbar-qr {
+.navbar {
   width: 100%;
+  height: 80px;
 
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 
-  padding: 24px 30px;
+  padding: 0 40px;
 
-  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 /* =========================
-   QR PROFILE AVATAR
+   LOGO
 ========================= */
 
-.user-avatar-qr {
+.logo h2 {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
 
-  width: 48px;
-  height: 48px;
+/* =========================
+   PROFILE AVATAR
+========================= */
+
+.user-avatar {
+  width: 52px;
+  height: 52px;
 
   border-radius: 50%;
-
-  background: linear-gradient(135deg, #ffffff, #d4d4d4);
-
-  color: black;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #dcdcdc
+  );
+
+  color: #111;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: 0.3s ease;
+  box-shadow:
+    0 8px 20px rgba(255,255,255,0.12);
 
-  box-shadow: 0 10px 25px rgba(255,255,255,0.12);
-
-  user-select: none;
+  transition: all 0.3s ease;
 }
 
-.user-avatar-qr:hover {
-
-  transform: scale(1.08);
-
-  box-shadow: 0 14px 30px rgba(255,255,255,0.18);
+.user-avatar:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 30px rgba(255,255,255,0.18);
 }
-
 /* =========================
    QR DROPDOWN
 ========================= */
@@ -1869,4 +1891,505 @@ body {
     color: #ff4d4d;
     font-size: 14px;
     margin-top: 10px;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #050505;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 40px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.02);
+
+  backdrop-filter: blur(10px);
+}
+
+.logo h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   USER AVATAR
+========================= */
+
+.user-avatar {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #d6d6d6
+  );
+
+  color: #111;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(255,255,255,0.15);
+}
+
+.user-avatar:hover {
+  transform: scale(1.08);
+}
+
+/* =========================
+   DROPDOWN
+========================= */
+
+.dropdown {
+  position: absolute;
+
+  top: 90px;
+  right: 30px;
+
+  width: 300px;
+
+  background: #111;
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.5);
+
+  z-index: 1000;
+}
+
+.dropdown h3 {
+  margin-bottom: 20px;
+}
+
+.dropdown p {
+  margin: 12px 0;
+  font-size: 15px;
+}
+
+.close-btn {
+  width: 100%;
+  margin-top: 15px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: white;
+  color: black;
+
+  cursor: pointer;
+
+  font-weight: 600;
+}
+
+/* =========================
+   HOME SECTION
+========================= */
+
+.home-container {
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 20px;
+}
+
+.home-content {
+  max-width: 900px;
+}
+
+.home-content h1 {
+  font-size: 5rem;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.home-content p {
+  color: #bdbdbd;
+  font-size: 1.3rem;
+  line-height: 1.8;
+
+  max-width: 700px;
+  margin: auto;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.home-buttons {
+  margin-top: 50px;
+
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.home-buttons button {
+  padding: 14px 28px;
+
+  border-radius: 40px;
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(255,255,255,0.05);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.home-buttons button:hover {
+  background: white;
+  color: black;
+  transform: translateY(-2px);
+}
+
+/*
+GENERATE QR
+*/
+
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #050505;
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 40px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(12px);
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+}
+
+/* =========================
+   USER AVATAR
+========================= */
+
+.user-avatar {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(
+    135deg,
+    #ffffff,
+    #d7d7d7
+  );
+
+  color: #111;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(255,255,255,0.12);
+}
+
+.user-avatar:hover {
+  transform: scale(1.08);
+}
+
+/* =========================
+   PROFILE DROPDOWN
+========================= */
+
+.dropdown {
+  position: absolute;
+
+  top: 90px;
+  right: 30px;
+
+  width: 320px;
+
+  background: #111;
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.5);
+
+  z-index: 1000;
+}
+
+.dropdown h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.dropdown p {
+  margin: 12px 0;
+  color: #d0d0d0;
+}
+
+.close-btn {
+  width: 100%;
+  margin-top: 18px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: white;
+  color: black;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================
+   QR PAGE
+========================= */
+
+.qr-container {
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+}
+
+.qr-card {
+  width: 100%;
+  max-width: 700px;
+
+  text-align: center;
+
+  padding: 50px;
+
+  border-radius: 24px;
+
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.qr-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+
+  margin-bottom: 15px;
+
+  color: white;
+}
+
+.qr-subtitle {
+  color: #bdbdbd;
+
+  font-size: 1.1rem;
+
+  margin-bottom: 35px;
+
+  line-height: 1.7;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.qr-button {
+  padding: 14px 32px;
+
+  border-radius: 40px;
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(255,255,255,0.05);
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.qr-button:hover {
+  background: white;
+  color: black;
+
+  transform: translateY(-2px);
+}
+
+/* =========================
+   QR IMAGE
+========================= */
+
+.qr-image-wrapper {
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.qr-image {
+  width: 280px;
+  height: 280px;
+
+  object-fit: contain;
+
+  padding: 15px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 40px rgba(255,255,255,0.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .logo h2 {
+    font-size: 26px;
+  }
+
+  .qr-card {
+    padding: 30px 20px;
+  }
+
+  .qr-title {
+    font-size: 2.4rem;
+  }
+
+  .qr-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .dropdown {
+    width: 280px;
+    right: 15px;
+  }
 }

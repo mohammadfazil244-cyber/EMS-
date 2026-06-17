@@ -96,42 +96,40 @@ function Myattendence(){
         
 
 
-        {taskData.map((task,index) => (
-
-            <div
-                className="attendance-row1"
-                key={task.employeeid}
-            >
-
-                <p>{task.employeeid}</p>
-
-                <p>{task.employee}</p>
-
-                <p>{task.task}</p>
-
-                <p>{task.role}</p>
-
-                <p>{task.remarks || "-"} </p>
-
-                <p>{task.date}</p>
-
-                <p
-                    className={
-                        qrData?.status === "PRESENT"
-                        ? "present"
-                        : "absent"
-
-                    }
-                >
-                    {qrData?.status || "ABSENT"}
-                </p>
-
-            </div>
-
-        ))}
-
+       
     </div>
 
+   {
+  qrData.map((qr) => {
+
+    const task = taskData.find(
+      t =>
+        t.employeeid === qr.employeeid &&
+        t.date === qr.localDate
+    );
+
+    return (
+      <div
+        className="attendance-row1"
+        key={qr.id}
+      >
+        <p>{qr.employeeid}</p>
+
+        <p>{qr.name}</p>
+
+        <p>{task?.task || "-"}</p>
+
+        <p>{task?.role || "-"}</p>
+
+        <p>{task?.remarks || "-"}</p>
+
+        <p>{qr.localDate}</p>
+
+        <p>{qr.status}</p>
+      </div>
+    );
+  })
+}
 </div>
     </>
 

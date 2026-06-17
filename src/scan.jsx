@@ -50,16 +50,16 @@ function Scan() {
       scanner.clear();
 
       axios
-        .get(`http://localhost:8080/Generate/scan/${sessionId}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        .get(
+          `http://localhost:8080/Generate/scan/${sessionId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then((res) => {
-          console.log("Attendance Marked:", res.data);
-
           alert("Attendance Marked!");
-
           navigate(`/view-attendence/${sessionId}`);
         })
         .catch((err) => {
@@ -80,45 +80,61 @@ function Scan() {
     <>
       {/* NAVBAR */}
       <div className="navbar">
+
         <div className="logo">
           <h2>EMS</h2>
         </div>
 
-         <button onClick={() => setPop(false)}>
-            Close
-          </button>
-          
-        
+        <div
+          className="user-avatar"
+          onClick={() => setPop(!pop)}
+        >
+          {user?.name?.charAt(0).toUpperCase() || "U"}
+        </div>
+
       </div>
 
       {/* PROFILE POPUP */}
       {pop && (
         <div className="dropdown">
-          <h1>User Details</h1>
 
-          <h2>Id : {user?.id}</h2>
+          <h3>User Details</h3>
 
-          <h2>User : {user?.name}</h2>
+          <p>
+            <strong>ID:</strong> {user?.id}
+          </p>
 
-          <h2>Email : {user?.email}</h2>
+          <p>
+            <strong>Name:</strong> {user?.name}
+          </p>
 
-          <button onClick={() => setPop(false)}>
+          <p>
+            <strong>Email:</strong> {user?.email}
+          </p>
+
+          <button
+            className="close-btn"
+            onClick={() => setPop(false)}
+          >
             Close
           </button>
+
         </div>
       )}
 
-      {/* SCANNER */}
+      {/* QR SCANNER */}
       <div className="scanner-container">
-        <h2 className="scanner-title">
+
+        <h1 className="scanner-title">
           Scan Attendance QR
-        </h2>
+        </h1>
 
         <div id="qr-reader"></div>
 
         <p className="scanner-text">
-          Point your camera at QR code
+          Point your camera at the QR code
         </p>
+
       </div>
     </>
   );
