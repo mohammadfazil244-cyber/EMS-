@@ -39,6 +39,7 @@ function ViewAttendence() {
 
    }
 
+   
 useEffect(() => {
     if (!sessionId) return;
     if (called.current) return;
@@ -130,6 +131,7 @@ return (
   <option value="NOT_COMPLETED">NOT COMPLETED</option>
   <option value="COMPLETED">COMPLETED</option>
 </select>
+             <button onClick={handleStatus} className="btn-viewattendence">Submit</button>
                 
                         </>
                     )

@@ -9,6 +9,8 @@ function Myattendence(){
     const [qrData,setqrData] = useState([])
 
 
+ 
+
     const handleSearch = async() => {
  
       const startDate = firstDate.toISOString().split("T")[0];
@@ -16,9 +18,9 @@ function Myattendence(){
 
       try{
 
-        const employeeid = localStorage.getItem("employeeid")
+        const email = localStorage.getItem("email")
         const token = localStorage.getItem("token")
-        const response = await axios.get(`http://localhost:8080/Employee/myattendence/${startDate}/${endDate}/${employeeid}`,
+        const response = await axios.get(`http://localhost:8080/Employee/myattendence/${startDate}/${endDate}/${email}`,
           {
           headers: {
           Authorization: `Bearer ${token}`,
@@ -91,6 +93,9 @@ function Myattendence(){
 
         </div>
 
+        
+
+
         {taskData.map((task,index) => (
 
             <div
@@ -112,13 +117,13 @@ function Myattendence(){
 
                 <p
                     className={
-                        qrData[index]?.status === "PRESENT"
+                        qrData?.status === "PRESENT"
                         ? "present"
                         : "absent"
 
                     }
                 >
-                    {qrData[index]?.status || "ABSENT"}
+                    {qrData?.status || "ABSENT"}
                 </p>
 
             </div>

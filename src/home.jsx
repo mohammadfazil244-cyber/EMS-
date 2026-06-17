@@ -36,11 +36,7 @@ function Home(){
    },[])
 
 
-   const handleProfile = () =>{
-
-    setPop(true)
-        
-   }
+ 
    const handleAttend = async () => {
 
    try{
@@ -119,16 +115,7 @@ function Home(){
         <h2>EMS</h2>
       </div>
 
-      {
-        user && (
-          <h2
-            className="user-avatar"
-            onClick={handleProfile}
-          >
-            {user.name[0].toUpperCase()}
-          </h2>
-        )
-      }
+      
 
     </div>
 

@@ -28,7 +28,7 @@ function UserPage(){
 
       setUser(response.data)
 
-    const employeeid = localStorage.setItem("employeeid" , response.data.employeeid)
+    const email = localStorage.setItem("email" , response.data.email)
 
     })
 

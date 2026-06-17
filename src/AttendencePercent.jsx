@@ -53,7 +53,7 @@ function AttendencePercent() {
         Employee Details
       </h1>
 
-      <div style={{ marginBottom: "20px" }}>
+      <div style={{ marginBottom: "20px" }} className="date-filter">
         <input
           type="date"
           value={date.toISOString().split("T")[0]}
@@ -63,7 +63,7 @@ function AttendencePercent() {
 
       <div className="attendance-table">
         <div className="attendance-header">
-          <h3>Employee <br />ID</h3>
+          <h3>ID</h3>
           <h3>Name</h3>
           <h3>Email</h3>
           <h3>Status</h3>

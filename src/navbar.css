@@ -912,155 +912,128 @@ body{
 /* =========================
    ATTENDANCE PAGE
 ========================= */
-.attendance-page {
-  min-height: 100vh;
-  padding: 40px;
-  background: #000;
-  color: white;
-}
-
-.attendance-title {
-  font-size: 42px;
-  margin-bottom: 40px;
-  text-align: center;
-  font-weight: bold;
-}
-
-/* TABLE */
-
 .attendance-table {
   width: 100%;
-  max-width: 1500px;
-  margin: auto;
-  border: 1px solid #222;
-  border-radius: 18px;
+  max-width: 1400px;
+  margin: 30px auto;
+  background: #0b0b0b;
+  border: 1px solid #1c1c1c;
+  border-radius: 16px;
   overflow: hidden;
-  background: #0d0d0d;
 }
 
-/* HEADER */
-
-.attendance-header {
+.attendance-header,
+.attendance-row {
   display: grid;
   grid-template-columns:
-    1fr    /* Employee ID */
-    1.5fr  /* Name */
-    2fr    /* Email */
-    1fr    /* Status */
-    1.2fr  /* Date */
-    2fr    /* Task */
-    1.5fr  /* Completed */
-    1.5fr; /* Remarks */
-
-  gap: 20px;
-  padding: 22px 25px;
-  background: #111;
-  border-bottom: 1px solid #222;
+    70px
+    140px
+    260px
+    120px
+    130px
+    180px
+    180px
+    120px;
   align-items: center;
+}
+
+.attendance-header {
+  background: #121212;
+  padding: 18px 24px;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .attendance-header h3 {
   margin: 0;
-  color: #999;
-  font-size: 13px;
-  text-transform: uppercase;
+  font-size: 12px;
   letter-spacing: 1px;
-  font-weight: 600;
-  white-space: nowrap;
+  color: #7c7c7c;
+  text-transform: uppercase;
 }
 
-/* ROWS */
-
 .attendance-row {
-  display: grid;
-  grid-template-columns:
-    1fr
-    1.5fr
-    2fr
-    1fr
-    1.2fr
-    2fr
-    1.5fr
-    1.5fr;
+  padding: 16px 24px;
+  border-bottom: 1px solid #181818;
+  transition: 0.2s ease;
+}
 
-  gap: 20px;
-  padding: 18px 25px;
-  align-items: center;
-  border-bottom: 1px solid #222;
-  transition: background 0.2s ease;
+.attendance-row:nth-child(even) {
+  background: #0f0f0f;
 }
 
 .attendance-row:hover {
-  background: #141414;
-}
-
-.attendance-row:last-child {
-  border-bottom: none;
+  background: #181818;
 }
 
 .attendance-row p {
   margin: 0;
-  color: #f1f1f1;
   font-size: 14px;
-  overflow-wrap: break-word;
+  color: #f5f5f5;
 }
 
-/* STATUS */
-
-.present {
-  color: #00d26a;
+/* employee id */
+.attendance-row p:first-child {
+  color: #888;
   font-weight: 600;
+}
+
+/* name */
+.attendance-row p:nth-child(2) {
+  font-weight: 600;
+}
+
+/* email */
+.attendance-row p:nth-child(3) {
+  color: #b0b0b0;
+  font-size: 13px;
+}
+
+/* status */
+.present {
+  color: #22c55e;
+  font-weight: 700;
 }
 
 .absent {
-  color: #ff4d4f;
-  font-weight: 600;
+  color: #ef4444;
+  font-weight: 700;
 }
 
-/* DATE PICKER */
+.attendance-page {
+  min-height: 100vh;
+  background: #000;
+  color: white;
+  padding: 30px;
+}
+
+.attendance-title {
+  font-size: 34px;
+  margin-bottom: 25px;
+  text-align: center;
+}
 
 input[type="date"] {
   background: #111;
-  color: white;
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 768px) {
-
-  .attendance-header {
-    display: none;
-  }
-
-  .attendance-row {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 18px;
-    border-bottom: 1px solid #222;
-  }
-
-  .attendance-row p {
-    width: 100%;
-    background: #111;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #1f1f1f;
-  }
-}
-
-body {
-  background-color: #000;
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input[type="date"]:hover {
+  border-color: #444;
+}
+
+input[type="date"]:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
 }
 
 /* Page container */
@@ -1501,6 +1474,31 @@ VIEW-ATTENDENCE
 .status-select option {
   background: #111;
   color: #fff;
+}
+.btn-viewattendence {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-viewattendence:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.btn-viewattendence:active {
+  transform: translateY(0);
+}
+
+.btn-viewattendence:disabled {
+  background: #888;
+  cursor: not-allowed;
 }
 
 
