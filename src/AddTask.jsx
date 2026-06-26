@@ -20,7 +20,7 @@ function AddTask(){
 
   try {
     const response = await axios.put(
-      `http://localhost:8080/Employee/TaskUpdate/${employeeid}`,
+      `https://ems-backend-6-q03r.onrender.com/Employee/TaskUpdate/${employeeid}`,
       {
         employee,
         role,
@@ -71,7 +71,7 @@ const handleEdit = (emp) => {
 
       try{
 
-        await axios.delete("http://localhost:8080/Employee/TaskDelete",
+        await axios.delete("https://ems-backend-6-q03r.onrender.com/Employee/TaskDelete",
            {
     data: employeeid,
     headers: {
@@ -91,7 +91,7 @@ const handleEdit = (emp) => {
     useEffect(() => {
         const token = localStorage.getItem("token")
 
-        axios.get("http://localhost:8080/Employee/AllTasks",
+        axios.get("https://ems-backend-6-q03r.onrender.com/Employee/AllTasks",
             {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -111,7 +111,7 @@ const handleEdit = (emp) => {
         const token = localStorage.getItem("token")
         try{
          const response = await axios.post(
-      "http://localhost:8080/Employee/Task",
+      "https://ems-backend-6-q03r.onrender.com/Employee/Task",
       {
         employee,
         role,

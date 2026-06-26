@@ -15,7 +15,7 @@ function Scan() {
     if (!token) return;
 
     axios
-      .get("http://localhost:8080/Auth/profile", {
+      .get("https://ems-backend-6-q03r.onrender.com/Auth/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -51,7 +51,7 @@ function Scan() {
 
       axios
         .get(
-          `http://localhost:8080/Generate/scan/${sessionId}`,
+          `https://ems-backend-6-q03r.onrender.com/Generate/scan/${sessionId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

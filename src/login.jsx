@@ -10,7 +10,7 @@ function Login(){
 
     const handleGoogle = () => {
         
-        window.location.href = "http://localhost:8080/oauth2/authorization/google" ;
+        window.location.href = "https://ems-backend-6-q03r.onrender.com/oauth2/authorization/google" ;
 
 
 
@@ -37,7 +37,7 @@ function Login(){
           
         if(email && password){
 
-           const response = await (axios.post("http://localhost:8080/Auth/login",{
+           const response = await (axios.post("https://ems-backend-6-q03r.onrender.com/Auth/login",{
                email,
                password
 

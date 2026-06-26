@@ -12,7 +12,7 @@ function AttendencePercent() {
     
 
     axios
-      .get("http://localhost:8080/Employee/Details", {
+      .get("https://ems-backend-6-q03r.onrender.com/Employee/Details", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -30,7 +30,7 @@ function AttendencePercent() {
     const selectedDate = date.toISOString().split("T")[0];
 
     axios
-      .get("http://localhost:8080/Employee/ByDate", {
+      .get("https://ems-backend-6-q03r.onrender.com/Employee/ByDate", {
         params: {
           date: selectedDate,
         },

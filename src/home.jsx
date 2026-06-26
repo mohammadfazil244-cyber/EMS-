@@ -18,7 +18,7 @@ function Home() {
     if (!token) return;
 
     axios
-      .get("http://localhost:8080/Auth/profile", {
+      .get("https://ems-backend-6-q03r.onrender.com/Auth/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -36,7 +36,7 @@ function Home() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:8080/Generate/GetAttendence",
+        "https://ems-backend-6-q03r.onrender.com/Generate/GetAttendence",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ function Home() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.get("http://localhost:8080/Auth/users", {
+      await axios.get("https://ems-backend-6-q03r.onrender.com/Auth/users", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

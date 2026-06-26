@@ -15,7 +15,7 @@ function Register() {
       
        
 
-        window.location.href = "http://localhost:8080/oauth2/authorization/google" ;
+        window.location.href = "https://ems-backend-6-q03r.onrender.com/oauth2/authorization/google" ;
 
        
 }
@@ -35,7 +35,7 @@ function Register() {
 
       if(email && password){
 
-        const response = await axios.post("http://localhost:8080/Auth/Register", {
+        const response = await axios.post("https://ems-backend-6-q03r.onrender.com/Auth/Register", {
         email ,
         password,
         name
