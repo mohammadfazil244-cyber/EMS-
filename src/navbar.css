@@ -1057,7 +1057,80 @@ body {
   background: #0f0f0f;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
+@media (max-width: 768px) {
+
+  .page {
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .card {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .card h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .form button {
+    grid-column: span 1;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table th,
+  .table td {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .page {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 20px 15px;
+    border-radius: 18px;
+  }
+
+  .card h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .form input,
+  .form button {
+    padding: 13px;
+    font-size: 14px;
+  }
+
+  .table th,
+  .table td {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+}
 /*
 VIEW-ATTENDENCE
 */
