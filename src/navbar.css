@@ -774,18 +774,19 @@ body{
 /* =========================
    ATTENDANCE PAGE
 ========================= */
+/* Scroll container */
 .attendance-table {
   width: 100%;
-  max-width: 1400px;
-  margin: 30px auto;
-  background: #0b0b0b;
-  border: 1px solid #1c1c1c;
-  border-radius: 16px;
-  overflow: hidden;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
+/* Keep header and rows wider than mobile */
 .attendance-header,
 .attendance-row {
+  min-width: 1200px; /* Adjust if you have more/fewer columns */
   display: grid;
   grid-template-columns:
     70px
@@ -799,58 +800,21 @@ body{
   align-items: center;
 }
 
-.attendance-header {
-  background: #121212;
-  padding: 18px 24px;
-  border-bottom: 1px solid #222;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.attendance-header h3 {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: #7c7c7c;
-  text-transform: uppercase;
-}
-
-.attendance-row {
-  padding: 16px 24px;
-  border-bottom: 1px solid #181818;
-  transition: 0.2s ease;
-}
-
-.attendance-row:nth-child(even) {
-  background: #0f0f0f;
-}
-
-.attendance-row:hover {
-  background: #181818;
-}
-
+/* Prevent text from wrapping */
+.attendance-header h3,
 .attendance-row p {
-  margin: 0;
-  font-size: 14px;
-  color: #f5f5f5;
+  white-space: nowrap;
 }
 
-/* employee id */
-.attendance-row p:first-child {
-  color: #888;
-  font-weight: 600;
-}
+/* Mobile */
+@media (max-width: 768px) {
+  .attendance-page {
+    padding: 20px 15px;
+  }
 
-/* name */
-.attendance-row p:nth-child(2) {
-  font-weight: 600;
-}
-
-/* email */
-.attendance-row p:nth-child(3) {
-  color: #b0b0b0;
-  font-size: 13px;
+  .attendance-table {
+    border-radius: 12px;
+  }
 }
 
 /* status */
@@ -1026,6 +990,7 @@ body {
 .form button:hover {
   opacity: 0.9;
 }
+
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -1033,21 +998,9 @@ body {
 }
 
 .table {
-  min-width: 900px;      /* Increase based on your columns */
-  width: max-content;    /* Important */
+  width: 100%;
+  min-width: 700px; /* Adjust based on your columns */
   border-collapse: collapse;
-  border: 1px solid #1f1f1f;
-  border-radius: 16px;
-}
-
-.table th,
-.table td {
-  white-space: nowrap;   /* Prevent text from wrapping */
-  padding: 18px;
-}
-
-.table th {
-  background: #0f0f0f;
 }
 /* =========================
    RESPONSIVE
