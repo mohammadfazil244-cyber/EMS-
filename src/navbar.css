@@ -239,102 +239,6 @@ body {
 
 
 /* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media (max-width: 600px) {
-
-  .app {
-    width: 95%;
-  }
-
-  .navbar {
-    padding: 18px 0;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .nav-buttons {
-    gap: 10px;
-  }
-
-  .login-btn,
-  .signup-btn {
-    font-size: 14px;
-  }
-
-  .signup-btn {
-    padding: 8px 14px;
-  }
-
-  .hero {
-    padding-top: 50px;
-
-    gap: 40px;
-  }
-
-  .hero-content h1 {
-    font-size: 38px;
-
-    line-height: 1.1;
-
-    letter-spacing: -1px;
-  }
-
-  .hero-content p {
-    font-size: 16px;
-
-    line-height: 1.6;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-
-    align-items: center;
-  }
-
-  .hero-buttons button {
-    width: 100%;
-
-    max-width: 250px;
-  }
-
-  .hero-right img {
-    border-radius: 18px;
-  }
-} 
-
-.logo {
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-}
-
-.logo h2 {
-  font-size: 24px;
-
-  font-weight: 700;
-
-  color: white;
-}
-
-.logo img {
-  width: 45px;
-
-  height: 45px;
-
-  border-radius: 50%;
-
-  object-fit: cover;
-
-  border: 1px solid #333;
-}
-
-/* =========================
    HOME PAGE
 ========================= */
 
@@ -420,54 +324,6 @@ body {
   background-color: #222;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-
-  .home-content h1 {
-    font-size: 48px;
-  }
-
-  .home-content p {
-    font-size: 16px;
-  }
-
-  .home-buttons {
-    flex-direction: column;
-
-    align-items: center;
-  }
-
-  .home-buttons button {
-    width: 100%;
-
-    max-width: 280px;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .home-content h1 {
-    font-size: 36px;
-
-    line-height: 1.1;
-  }
-
-  .home-content p {
-    margin-top: 18px;
-  }
-}
-
-.navbar {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 20px;
-  border-bottom: 1px solid #222;
-}
 
 /* Avatar styling */
 .user-avatar {
@@ -910,22 +766,6 @@ body{
   margin-bottom: 10px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 600px) {
-
-  .attendance-container {
-
-    padding: 100px 20px 20px;
-  }
-
-  .attendance-card {
-
-    width: 100%;
-  }
-}
 
 /* =========================
    ATTENDANCE PAGE
@@ -2361,39 +2201,6 @@ body {
     0 20px 40px rgba(255,255,255,0.08);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-
-  .navbar {
-    padding: 0 20px;
-  }
-
-  .logo h2 {
-    font-size: 26px;
-  }
-
-  .qr-card {
-    padding: 30px 20px;
-  }
-
-  .qr-title {
-    font-size: 2.4rem;
-  }
-
-  .qr-image {
-    width: 220px;
-    height: 220px;
-  }
-
-  .dropdown {
-    width: 280px;
-    right: 15px;
-  }
-}
-
 /*
 INFO 
 */
@@ -2651,18 +2458,173 @@ button {
   color: var(--text-muted);
 }
 
-/* Responsive adjustments */
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* ---------- 968px ---------- */
+
 @media (max-width: 968px) {
+
   .preview-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+
   .hero-title {
     font-size: 2.5rem;
   }
+
   .footer-content {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
+
+}
+
+/* ---------- 768px ---------- */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .logo h2 {
+    font-size: 26px;
+  }
+
+  .qr-card {
+    padding: 30px 20px;
+  }
+
+  .qr-title {
+    font-size: 2.4rem;
+  }
+
+  .qr-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .dropdown {
+    width: min(280px, 90%);
+    right: 15px;
+  }
+
+  .home-content h1 {
+    font-size: 48px;
+  }
+
+  .home-content p {
+    font-size: 16px;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-buttons button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+}
+
+/* ---------- 600px ---------- */
+
+@media (max-width: 600px) {
+
+  .app {
+    width: 95%;
+  }
+
+  .navbar {
+    padding: 18px 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo h2 {
+    font-size: 20px;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-buttons {
+    gap: 10px;
+  }
+
+  .login-btn,
+  .signup-btn {
+    font-size: 14px;
+  }
+
+  .signup-btn {
+    padding: 8px 14px;
+  }
+
+  .hero {
+    padding-top: 50px;
+    gap: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 38px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons button {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .hero-right img {
+    border-radius: 18px;
+  }
+
+  .attendance-container {
+    padding: 100px 20px 20px;
+  }
+
+  .attendance-card {
+    width: 100%;
+  }
+
+}
+
+/* ---------- 480px ---------- */
+
+@media (max-width: 480px) {
+
+  .home-content h1 {
+    font-size: 36px;
+    line-height: 1.1;
+  }
+
+  .home-content p {
+    margin-top: 18px;
+  }
+
 }
