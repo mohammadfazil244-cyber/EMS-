@@ -18,7 +18,7 @@ function UserDetails(){
 
 
        const response = await axios.put(
-            "http://localhost:8080/Auth/completeProfile",
+            "https://ems-backend-6-q03r.onrender.com/Auth/completeProfile",
             {
                 name,
                 password,
