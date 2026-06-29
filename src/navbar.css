@@ -1026,7 +1026,6 @@ body {
 .form button:hover {
   opacity: 0.9;
 }
-
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -1034,9 +1033,21 @@ body {
 }
 
 .table {
-  width: 100%;
-  min-width: 700px; /* Adjust based on your columns */
+  min-width: 900px;      /* Increase based on your columns */
+  width: max-content;    /* Important */
   border-collapse: collapse;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+}
+
+.table th,
+.table td {
+  white-space: nowrap;   /* Prevent text from wrapping */
+  padding: 18px;
+}
+
+.table th {
+  background: #0f0f0f;
 }
 /* =========================
    RESPONSIVE
