@@ -202,7 +202,8 @@ const handleEdit = (emp) => {
 )}
     </div>
 
-    
+    <div className="table-wrapper">
+
       <table className="table">
         <thead>
           <tr>
@@ -229,6 +230,9 @@ const handleEdit = (emp) => {
   ))}
 </tbody>
       </table>
+
+    </div>
+      
     
   </div>
 </div>

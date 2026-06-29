@@ -1027,36 +1027,17 @@ body {
   opacity: 0.9;
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .table {
   width: 100%;
+  min-width: 700px; /* Adjust based on your columns */
   border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid #1f1f1f;
 }
-
-.table thead {
-  background: #0f0f0f;
-}
-
-.table th {
-  text-align: left;
-  padding: 18px;
-  color: #b3b3b3;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 13px;
-}
-
-.table td {
-  padding: 18px;
-  border-top: 1px solid #1f1f1f;
-}
-
-.table tbody tr:hover {
-  background: #0f0f0f;
-}
-
 /* =========================
    RESPONSIVE
 ========================= */
