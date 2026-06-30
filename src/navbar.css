@@ -1534,7 +1534,46 @@ VIEW-ATTENDENCE
     word-break: break-word;
 }
 
+/* Keep your existing CSS exactly as it is above */
 
+/* Tablet and below */
+@media (max-width: 992px) {
+    .attendance-header1,
+    .attendance-row1 {
+        grid-template-columns:
+            70px
+            1fr
+            1.2fr
+            1fr
+            1.2fr
+            120px
+            100px;
+        padding: 14px 16px;
+        gap: 8px;
+    }
+
+    .attendance-header1 h4,
+    .attendance-row1 p {
+        font-size: 13px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .attendance-table1 {
+        overflow-x: auto;
+    }
+
+    .attendance-header1,
+    .attendance-row1 {
+        min-width: 800px; /* keeps structure intact */
+    }
+
+    .attendance-header1 h4,
+    .attendance-row1 p {
+        font-size: 12px;
+    }
+}
 
 .present{
     color:#22c55e;
