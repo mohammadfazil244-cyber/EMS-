@@ -17,7 +17,7 @@ function ViewAttendence() {
    const handleStatus = () => {
 
 
-      axios.post("http://localhost:8080/Employee/UpdateStatus" ,
+      axios.post("https://ems-backend-6-q03r.onrender.com/Employee/UpdateStatus" ,
 
               {
                 email: data.email,
@@ -47,7 +47,7 @@ useEffect(() => {
     called.current = true;
 
     
-    axios.get("http://localhost:8080/Employee/Details" ,
+    axios.get("https://ems-backend-6-q03r.onrender.com/Employee/Details" ,
         {
             headers:{
                 Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ useEffect(() => {
         console.log(res.data)
     })
     axios
-        .get(`http://localhost:8080/Generate/scan/${sessionId}`, {
+        .get(`https://ems-backend-6-q03r.onrender.com/Generate/scan/${sessionId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
