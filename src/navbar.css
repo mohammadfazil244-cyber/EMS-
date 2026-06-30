@@ -1643,7 +1643,7 @@ VIEW-ATTENDENCE
     .attendance-table1{
         overflow-x: auto;
         overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
+        
     }
 
     .attendance-header1,
