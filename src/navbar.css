@@ -1553,18 +1553,24 @@ VIEW-ATTENDENCE
     padding:12px 18px;
     border-radius:12px;
 }
-
-.attendance-table1{
+.attendance-table1 {
     width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
     background: #0d0d0d;
     border: 1px solid #222;
     border-radius: 15px;
     margin-top: 30px;
 }
 
-
+/* Keep header and rows wider than mobile */
 .attendance-header1,
-.attendance-row1{
+.attendance-row1 {
+    min-width: 1200px; /* Adjust based on your columns */
+
     display: grid;
     grid-template-columns:
         80px      /* ID */
@@ -1580,86 +1586,59 @@ VIEW-ATTENDENCE
     gap: 10px;
 }
 
-.attendance-header1{
+.attendance-header1 {
     background: #111;
     border-bottom: 1px solid #222;
 }
 
-.attendance-header1 h4{
+.attendance-row1 {
+    border-bottom: 1px solid #1a1a1a;
+    transition: 0.2s ease;
+}
+
+.attendance-row1:last-child {
+    border-bottom: none;
+}
+
+.attendance-row1:hover {
+    background: #141414;
+}
+
+/* Prevent text from wrapping */
+.attendance-header1 h4,
+.attendance-row1 p {
+    white-space: nowrap;
+}
+
+.attendance-header1 h4 {
     margin: 0;
     color: #b3b3b3;
     font-size: 14px;
     font-weight: 600;
 }
 
-.attendance-row1{
-    border-bottom: 1px solid #1a1a1a;
-    transition: 0.2s ease;
-}
-
-.attendance-row1:last-child{
-    border-bottom: none;
-}
-
-.attendance-row1:hover{
-    background: #141414;
-}
-
-.attendance-row1 p{
+.attendance-row1 p {
     margin: 0;
     color: #fff;
     font-size: 14px;
-    word-break: break-word;
-}
-
-/* Keep your existing CSS exactly as it is above */
-
-/* Tablet and below */
-@media (max-width: 992px) {
-    .attendance-header1,
-    .attendance-row1 {
-        grid-template-columns:
-            70px
-            1fr
-            1.2fr
-            1fr
-            1.2fr
-            120px
-            100px;
-        padding: 14px 16px;
-        gap: 8px;
-    }
-
-    .attendance-header1 h4,
-    .attendance-row1 p {
-        font-size: 13px;
-    }
 }
 
 /* Mobile */
-/* Mobile */
-@media (max-width: 600px){
-
-    .attendance-table1{
-        overflow-x: auto;
-        overflow-y: hidden;
-        
-    }
-
-    .attendance-header1,
-    .attendance-row1{
-        min-width: 900px;   /* wider than the phone */
-        width: 900px;
+@media (max-width: 768px) {
+    .attendance-table1 {
+        border-radius: 12px;
     }
 }
-.present{
-    color:#22c55e;
-    font-weight:600;
+
+/* Status */
+.present {
+    color: #22c55e;
+    font-weight: 700;
 }
 
-.absent{
-    color:#ef4444;
-    font-weight:600;
+.absent {
+    color: #ef4444;
+    font-weight: 700;
 }
 .attendance-search-btn{
     height: 48px;
