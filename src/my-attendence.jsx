@@ -77,8 +77,9 @@ function Myattendence(){
       </button>
 
     </div>
+<div className="attendance-table-wrapper">
 
-    <div className="attendance-table1">
+<div className="attendance-table1">
 
         <div className="attendance-header1">
 
@@ -99,6 +100,8 @@ function Myattendence(){
        
     </div>
 
+</div>
+    
    {
   qrData.map((qr) => {
 
