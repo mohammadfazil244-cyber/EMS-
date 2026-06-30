@@ -15,7 +15,7 @@ function UserPage(){
    useEffect(() => {
     const token = localStorage.getItem("token")
     console.log("TOKEN =", token);
-    axios.get("http://localhost:8080/Auth/profile" , {
+    axios.get("https://ems-backend-6-q03r.onrender.com/Auth/profile" , {
       
         headers: {
           Authorization : `Bearer ${token}`
@@ -47,7 +47,7 @@ function UserPage(){
       const token = localStorage.getItem("token")
 
       const response = await axios.get(
-         "http://localhost:8080/Generate/GetAttendence",
+         "https://ems-backend-6-q03r.onrender.com/Generate/GetAttendence",
          {
             headers:{
                Authorization:`Bearer ${token}`
@@ -90,7 +90,7 @@ function UserPage(){
                 }
             }
 
-            const AboutResponse = await axios.get("http://localhost:8080/Auth/users" , config)
+            const AboutResponse = await axios.get("https://ems-backend-6-q03r.onrender.com/Auth/users" , config)
           
             console.log( AboutResponse.data)
           
